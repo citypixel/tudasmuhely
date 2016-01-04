@@ -1,7 +1,7 @@
 <?php
-    $sql = mysqli_connect('localhost', 'root', 'root');
+    $sql = mysqli_connect('localhost', 'root', '');
     $sql->select_db('etterem');
-    
+    $sql->set_charset("utf8");
     $akod = false;
     $azonosito = false;
     if(isset($_GET['akod'])){
@@ -35,7 +35,8 @@
                 $anyag_nev_query->bind_param('i', $akod);
                 $anyag_nev_query->execute();
                 $anyag_nev_result = $anyag_nev_query->get_result();
-                $anyag_nev = $anyag_nev_result->fetch_assoc()['nev'];
+                $row = $anyag_nev_result->fetch_assoc();
+				$anyag_nev = $row['nev'];
                 printf("<h1>Ételek amikben %s van:</h1>\n", $anyag_nev);
 
                 $etel_query = $sql->prepare('SELECT etlap.azonosito, etlap.elnevezes
@@ -62,7 +63,8 @@
                 $etlap_elnevezes_query->bind_param('i', $azonosito);
                 $etlap_elnevezes_query->execute();
                 $etlap_elnevezes_result = $etlap_elnevezes_query->get_result();
-                $etlap_elnevezes = $etlap_elnevezes_result->fetch_assoc()['elnevezes'];
+                $row = $etlap_elnevezes_result->fetch_assoc();
+				$etlap_elnevezes = $row['elnevezes'];
                 
                 printf("<h1>%s receptje</h1>\n", $etlap_elnevezes);
             ?>

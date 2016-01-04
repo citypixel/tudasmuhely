@@ -21,7 +21,7 @@
 		{
 	  		echo "MySQL hiba:" . mysqli_connect_error();
 		}
-		
+		mysqli_set_charset($con,"utf8");
 		$result = mysqli_query($con, "SELECT akod,nev FROM anyag order by nev");
 	
 		if(mysqli_num_rows($result) > 0)
@@ -55,8 +55,8 @@
 		$kod=$_GET['akod'];
 
 		$result = mysqli_query($con,"SELECT nev FROM anyag where akod=".$kod);
-
-		$nev = mysqli_fetch_array($result)['nev'];
+		$row = mysqli_fetch_array($result);
+		$nev = $row['nev'];
 		
 		$sql = "SELECT etlap.azonosito,elnevezes FROM etlap,recept,anyag where etlap.azonosito=recept.azonosito and recept.akod=anyag.akod and anyag.akod=".$_GET['akod'];
 		$result = mysqli_query($con,$sql);
@@ -91,7 +91,8 @@
 	if (isset($_GET['etel']))
 	{
 	    $result        = mysqli_query($con, "SELECT elnevezes FROM etlap where azonosito=" . $_GET['etel']);
-	    $etelelnevezes = mysqli_fetch_array($result)['elnevezes'];
+	    $row = mysqli_fetch_array($result);
+		$etelelnevezes = $row['elnevezes'];
 	    
 		$result = mysqli_query($con, "SELECT nev,szuksmenny,mertegys FROM recept,anyag where recept.akod=anyag.akod and recept.azonosito=" . $_GET['etel']);
 ?>
