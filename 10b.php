@@ -95,7 +95,7 @@
                
 		 $datum = date("Y-m-d"); 
 				
-		 $anyag_nev_query = mysqli_query($con, 'INSERT INTO beszerzes (akod, datum, bear, menny) VALUES ('.$akod.', '.$datum.', '.$bear.', '.$beszerzes);
+		 $anyag_nev_query = mysqli_query($con, "INSERT INTO beszerzes (akod, datum, bear, menny) VALUES ($akod, '$datum', $bear, $beszerzes)");
 	}
 	
 	mysqli_close($con);

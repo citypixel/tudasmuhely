@@ -58,7 +58,8 @@
                 
 			   $datum = date("Y-m-d"); 
 				
-			   $anyag_nev_query = $sql->query('INSERT INTO beszerzes (akod, datum, bear, menny) VALUES ('.$akod.', '.$datum.', '.$bear.', '.$beszerzes);
+			   $anyag_nev_query = $sql->query("INSERT INTO beszerzes (akod, datum, bear, menny) VALUES ($akod, '$datum', $bear, $beszerzes)");
+			   echo $sql->error;
                 
             }
 ?>
