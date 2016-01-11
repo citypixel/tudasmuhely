@@ -72,7 +72,7 @@
         </select>
     </form>
 <?php
-if ($hiany){
+if (isset($hiany)){
    echo '<h2>Az étel nem rendelhető!</h2>';
    echo 'Hiányzó összetevők: <br />';
    foreach ($hiany as $key=>$value){
