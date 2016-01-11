@@ -79,10 +79,10 @@
 	   $sql = "SELECT nev, keszlet, mertegys, egysar FROM anyag WHERE akod = $akod";
        $result = mysqli_query($con,$sql);
 	   $row = mysqli_fetch_array($result);
-       $keszlet = $row[keszlet];
-	   $mertegys = $row[mertegys];
-	   $nev = $row[nev];
-	   $egysar = $row[egysar];
+       $keszlet = $row['keszlet'];
+	   $mertegys = $row['mertegys'];
+	   $nev = $row['nev'];
+	   $egysar = $row['egysar'];
 	   $uj_keszlet = ($keszlet + $beszerzes);
 	   $bear = $beszerzes * $egysar;
 				
