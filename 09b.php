@@ -16,6 +16,9 @@
 <body>
    <h1>Étlap (rendelés ellenőrzés)</h1>
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 		$con = mysqli_connect("localhost", "root", "", "etterem");
 
 		if (mysqli_connect_errno())
@@ -88,7 +91,7 @@
 	}
 	mysqli_close($con);
 
-if ($hiany){
+if (isset($hiany)){
    echo '<h2>Az étel nem rendelhető!</h2>';
    echo 'Hiányzó összetevők: <br />';
    foreach ($hiany as $key=>$value){
