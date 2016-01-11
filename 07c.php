@@ -1,9 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
     $sql = mysqli_connect('localhost', 'root', '');
     $sql->select_db('etterem');
     $sql->set_charset("utf8");
