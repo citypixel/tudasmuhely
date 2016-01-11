@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_GET['torol']== '1'){
+if(isset($_GET['torol'])){
    unset($_SESSION['kosar']);
 }
     $sql = mysqli_connect('localhost', 'root', '');
@@ -12,7 +12,7 @@ if($_GET['torol']== '1'){
         $azonosito = $_GET['azonosito'];
     }
 	
-if($_GET['szla']== '1'){
+if(isset($_GET['szla'])){
    $anyag_query2 = $sql->prepare('SELECT MAX(szlaszam) FROM szamlafej');
    $anyag_query2->execute();
    $anyag_nev_result = $anyag_query2->get_result();
@@ -64,6 +64,7 @@ if (isset($_GET['adag'])){
 $etlap_query = $sql->query('SELECT e.azonosito, e.elnevezes, f.tipnev FROM etlap AS e 
 					                    LEFT JOIN fajta AS f ON e.tipus = f.tipus
 										ORDER BY f.tipus');
+$select_string = '';
 while ($etel = $etlap_query->fetch_assoc()) {
    $selected = '';
    if($etel['azonosito'] == $azonosito){
