@@ -40,10 +40,10 @@
                 $anyag_nev_query->execute();
                 $anyag_nev_result = $anyag_nev_query->get_result();
 				$row = $anyag_nev_result->fetch_assoc();
-                $keszlet = $row[keszlet];
-			    $mertegys = $row[mertegys];
-			    $nev = $row[nev];
-			    $egysar = $row[egysar];
+                $keszlet = $row['keszlet'];
+			    $mertegys = $row['mertegys'];
+			    $nev = $row['nev'];
+			    $egysar = $row['egysar'];
 			    $uj_keszlet = ($keszlet + $beszerzes);
 				$bear = $beszerzes * $egysar;
 				
