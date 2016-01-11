@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_GET['torol']== '1'){
+if (isset($_GET['torol'] )){
    unset($_SESSION['kosar']);
 }
     $sql = mysqli_connect('localhost', 'root', '');
