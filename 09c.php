@@ -26,7 +26,7 @@
 										ORDER BY f.tipus');
             while ($anyag = $anyag_query->fetch_assoc()) {
                 $checked = '';
-                if($anyag['azonosito'] == $aszonosito){
+                if($anyag['azonosito'] == $azonosito){
                     $checked = 'checked';
                 }
                 printf("<input type='radio' name='azonosito' value=%s %s>%s</option>\n<br/>", $anyag['azonosito'], $checked, $anyag['elnevezes'] .' ('.$anyag['tipnev'].')');
@@ -74,7 +74,7 @@
     </form>
          <?php }
 		 
-if ($hiany){
+if (isset($hiany)){
    echo '<h2>Az étel nem rendelhető!</h2>';
    echo 'Hiányzó összetevők: <br />';
    foreach ($hiany as $key=>$value){
