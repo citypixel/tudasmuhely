@@ -1,4 +1,9 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
     $sql = mysqli_connect('localhost', 'root', '');
     $sql->select_db('etterem');
     $sql->set_charset("utf8");
@@ -26,7 +31,7 @@
 										ORDER BY f.tipus');
             while ($anyag = $anyag_query->fetch_assoc()) {
                 $checked = '';
-                if($anyag['azonosito'] == $aszonosito){
+                if($anyag['azonosito'] == $azonosito){
                     $checked = 'checked';
                 }
                 printf("<input type='radio' name='azonosito' value=%s %s>%s</option>\n<br/>", $anyag['azonosito'], $checked, $anyag['elnevezes'] .' ('.$anyag['tipnev'].')');
